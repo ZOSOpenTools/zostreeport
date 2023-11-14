@@ -2,7 +2,7 @@ export ZOPEN_STABLE_URL="https://github.com/IBM/zos-pstree.git"
 export ZOPEN_STABLE_DEPS="make moreutils comp_go coreutils"
 export ZOPEN_DEV_URL="https://github.com/IBM/zos-pstree.git"
 export ZOPEN_DEV_DEPS="make moreutils comp_go coreutils"
-export ZOPEN_BUILD_LINE="DEV"
+export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_RUNTIME_DEPS="bash"
 export ZOPEN_DONT_ADD_ZOSLIB_DEP=1
 export ZOPEN_CONFIGURE="skip"
@@ -15,8 +15,7 @@ ln -sf zos-pstree zospstree
 export ZOPEN_INSTALL_OPTS="PREFIX=\$ZOPEN_INSTALL_DIR install"
 
 zopen_pre_patch() {
-  export CFLAGS=""
-  export CPPFLAGS=""
+  export CGO_ENABLED=0
 }
 
 zopen_check_results()
