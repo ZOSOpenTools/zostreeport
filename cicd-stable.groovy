@@ -1,6 +1,13 @@
 node('linux')
 {
   stage ('Poll') {
+   // Poll from upstream:
+    checkout([
+                        $class: 'GitSCM',
+                        branches: [[name: '*/main']],
+                        doGenerateSubmoduleConfigurations: false,
+                        extensions: [],
+                        userRemoteConfigs: [[url: "https://github.com/IBM/zos-pstree.git"]]])
     checkout([
       $class: 'GitSCM',
       branches: [[name: '*/main']],
